@@ -1,0 +1,54 @@
+body {
+	overflow: hidden;
+}
+div, textarea {
+	font-family: "helvetica neue", "helvetica-neue", "helvetica", "arial", sans-serif;
+	font-size: 12px;
+}
+textarea {
+	border: none;
+	border-top: 1px solid #DDD;
+	width: 300px;
+	overflow: hidden;
+}
+div.strExp {
+	color: #999;
+}
+div.error {
+	color: red;
+}
+#results {
+	max-height: 165px;
+	overflow: auto;
+}
+input {
+	border: 1px solid #DDD;
+	background-color: #f0f0f0;
+}
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+	padding: 0;
+	margin: 0;
+	display: none;
+	position: fixed;
+	left: 10px;
+	top: 10px;
+	z-index: 2;
+}
+td {
+	background-color: #f0f0f0;
+	border: 1px solid #DDD;
+	height: 18px;
+	padding: 0;
+	margin: 0;
+}
+td input {
+	border-width: 0;
+	font-size: 9px;
+	width: 40px;
+	height: 15px;
+	padding: 0;
+	margin: 0;
+}

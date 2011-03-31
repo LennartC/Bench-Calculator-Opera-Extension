@@ -1,0 +1,16 @@
+Bench Calculator Opera Extension
+======
+Simple calculator, bc style, as Opera extension.
+
+Type what you want to calculate and press enter.
+
+CREDITS
+=======
+The "JavaScript Mathematical Expression Evaluator" is made by
+Khan Information Systems:
+http://www.codeproject.com/KB/scripting/jsexpressioneval.aspx
+
+LICENSE
+=======
+Bench Calculator Opera Extension is licensed under the Apache Licence,
+Version 2.0 (http://www.apache.org/licenses/LICENSE-2.0.html).
