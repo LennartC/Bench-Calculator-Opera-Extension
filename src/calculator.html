@@ -13,9 +13,16 @@
 var exp = new Expression();
 var setVarRE = new RegExp("^([a-zA-Z_$][0-9a-zA-Z_$]*)\\s*[=](.*)$","");
 const MAX_RESULTS=20;
+var historyPos = 0;
 
 function bc(ev) {
-	if (ev.keyCode == 13) {
+	switch (ev.keyCode) {
+	case 13: // enter
+		historyPos = 0;
+		var expressions = JSON.parse(localStorage.getItem("expression"));
+		expressions.unshift("");
+		localStorage.setItem("expression",JSON.stringify(expressions));
+		
 		var strExp = jQuery.trim($("#expression").val());
 		var result = "";
 		var resultClass = "";
@@ -43,20 +50,47 @@ function bc(ev) {
 		appendResult("<div class=\""+resultClass+"\">"+result+"</div>");
 		setExpr("");
 		return false;
-	} else {
+	case 38: // up
+		if (ev.which == 0) {
+			historyPos++;
+			var expressions = JSON.parse(localStorage.getItem("expression"));
+			if (historyPos >= expressions.length) historyPos = expressions.length-1;
+			setExpr(expressions[historyPos]);
+			return false;
+		}
+	case 40: // down
+		if (ev.which == 0) {
+			historyPos--;
+			if (historyPos < 0)  historyPos = 0;
+			if (historyPos == 0) {
+				setExpr("");
+				return false;
+			}
+			var expressions = JSON.parse(localStorage.getItem("expression"));
+			if (historyPos >= expressions.length) historyPos = expressions.length-1;
+			setExpr(expressions[historyPos]);
+			return false;
+		}
+	default:
 		setTimeout("persistExpr();", 5);
 		return true;
 	}
 }
 
 function persistExpr() {
-	localStorage.setItem("expression",$("#expression").val());
+	var expressions = JSON.parse(localStorage.getItem("expression"));
+	while(expressions.length > MAX_RESULTS) expressions.pop();
+	expressions[0] = $("#expression").val();
+	localStorage.setItem("expression",JSON.stringify(expressions));
+	$("#expression").focus();
 }
 
 function clearBC() {
 	exp.Reset();
 	setResult("");
 	setExpr("");
+	localStorage.setItem("expression",JSON.stringify([""]));
+	localStorage.setItem("results","");
 }
 
 function showFunctions() {
@@ -69,8 +103,7 @@ function appendExpr(expr) {
 
 function setExpr(expr) {
 	$("#expression").val(expr);
-	localStorage.setItem("expression",expr);
-	$("#expression").focus();
+	persistExpr();
 }
 
 function appendResult(result) {
@@ -114,9 +147,9 @@ function generateFunctionTable() {
 
 $(function () {
 	if (localStorage.getItem("expression")) {
-		$("#expression").val(localStorage.getItem("expression"));
+		$("#expression").val(JSON.parse(localStorage.getItem("expression"))[0]);
 	} else {
-		localStorage.setItem("expression","");
+		localStorage.setItem("expression",JSON.stringify([""]));
 	}
 	if (localStorage.getItem("results")) {
 		$("#results").append(localStorage.getItem("results"));

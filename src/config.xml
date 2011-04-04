@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<widget xmlns="http://www.w3.org/ns/widgets" id="https://github.com/LennartC/Bench-Calculator-Opera-Extension" version="1.0">
+<widget xmlns="http://www.w3.org/ns/widgets" id="https://github.com/LennartC/Bench-Calculator-Opera-Extension" version="1.01">
 	<name>Bench Calculator</name>
 	<description>Simple calculator, bc style. Type what you want to calculate and press enter.</description>
   	<author href="https://github.com/LennartC/" email="coopmans@lacerta.be">Lennart Coopmans</author>

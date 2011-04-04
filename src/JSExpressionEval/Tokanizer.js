@@ -48,7 +48,7 @@
  var lstDigits   = "0,1,2,3,4,5,6,7,8,9";
  var lstArithOps = "^,*,/,%,+,-";
  var lstLogicOps = "!,&,|";
- var lstCompaOps = "<,<=,>,>=,<>,=";
+ var lstCompaOps = "==,!=,<,<=,>,>=,<>";
  var lstFuncOps  = ["AVG","ABS","ACOS","ASC","ASIN","ATAN","CDATE","CHR","COS","DATE","FIX","HEX","IIF","LCASE","LEFT","LOG","MAX","MID","MIN","RAND","RIGHT","ROUND","SIN","SQRT","TAN","UCASE"];
 
 /*------------------------------------------------------------------------------
@@ -280,14 +280,24 @@
                 }
                 break;
             case "=" :
+				chrNext = pstrExpression.substr(intCntr + 1, 1);
                 if (strToken.length > 0)
                 {
                     arrTokens[intIndex] = strToken;
                     intIndex++;
                     strToken = "";
                 }
-                arrTokens[intIndex] = chrChar;
-                intIndex++;
+				if (chrNext == "=")
+                {
+                    arrTokens[intIndex] = chrChar + "=";
+                    intIndex++;
+                    intCntr++;
+                }
+				else
+				{
+					arrTokens[intIndex] = chrChar;
+					intIndex++;
+				}
                 break;
             case "'" :
                 if (strToken.length > 0)
@@ -331,6 +341,21 @@
                     intCntr = intPos;
                 }
                 break;
+            case "!" :
+				chrNext = pstrExpression.substr(intCntr + 1, 1);
+				if (chrNext == "=")
+                {
+					if (strToken.length > 0)
+					{
+						arrTokens[intIndex] = strToken;
+						intIndex++;
+						strToken = "";
+					}
+                    arrTokens[intIndex] = chrChar + "=";
+                    intIndex++;
+                    intCntr++;
+					break;
+                }
             default :
                 strToken += chrChar;
                 break;
@@ -342,6 +367,7 @@
 
     if (strToken.length > 0)
         arrTokens[intIndex] = strToken;
+
     return arrTokens;
 }
 

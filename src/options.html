@@ -1,0 +1,123 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="options.css">
+  <title id="widget-title">Opera Extensions | Bench Calculator</title>
+</head>
+<body>
+  <header>
+    <img src="icon_64.png">
+    <h1 id="widget-name">Bench Calculator v1.01</h1>
+    <h2>Made by <span id="widget-author">Lennart Coopmans</h2>
+  </header>
+
+  <section>
+    <p>Simple calculator, bc style, as Opera extension.</p>
+	<p>A small calculator that doesn't require you to click on buttons. It's somewhat similar to the gnu bc command line calculator.
+	Simply type a mathematical expression and press enter.</p>
+
+
+    <h3>Supported operators and functions:</h3>
+    <fieldset id="functions">
+		<section>
+			<header>Arithmetic</header>
+			<ul>
+				<li>+</li>
+				<li>-</li>
+				<li>*</li>
+				<li>/</li>
+				<li>%</li>
+				<li>^</li>
+			</ul>
+		</section>
+		<section>
+			<header>Logical</header>
+			<ul>
+				<li>!</li>
+				<li>&amp;</li>
+				<li>|</li>
+			</ul>
+		</section>
+		<section>
+			<header>Comparison</header>
+			<ul>
+				<li>==</li>
+				<li>!=</li>
+				<li>&gt;</li>
+				<li>&lt;<li>
+				<li>&gt;=<li>
+				<li>&lt;=<li>
+				<li>&lt;&gt;</li>
+			</ul>
+		</section>
+		<section>
+			<header>Functions</header>
+			<ul>
+				<li>AVG</li>
+				<li>ABS</li>
+				<li>ACOS</li>
+				<li>ASC</li>
+				<li>ASIN</li>
+				<li>ATAN</li>
+				<li>CDATE</li>
+				<li>CHR</li>
+				<li>COS</li>
+				<li>DATE</li>
+				<li>FIX</li>
+				<li>HEX</li>
+				<li>IIF</li>
+				<li>LCASE</li>
+				<li>LEFT</li>
+				<li>LOG</li>
+				<li>MAX</li>
+				<li>MID</li>
+				<li>MIN</li>
+				<li>RAND</li>
+				<li>RIGHT</li>
+				<li>ROUND</li>
+				<li>SIN</li>
+				<li>SQRT</li>
+				<li>TAN</li>
+				<li>UCASE</li>
+			</ul>
+		</section>
+
+    </fieldset>
+
+    <h3>Setting variables</h3>
+    <fieldset>
+      <p>
+       You can define variables by entering the following line:<br/>
+	   <pre>&lt;variable name&gt; = &lt;expression&gt;</pre>
+	   The expression will be evaluated, and the result stored in the variable.
+      </p>
+    </fieldset>
+
+
+    <h3>Clear</h3>
+    <fieldset>
+      <p>
+		Will clear the history. Command can be triggered by typing <i>clear</i> or <i>reset</i>
+      </p>
+    </fieldset>
+
+	
+    <h3>Credits</h3>
+    <fieldset>
+      <p>
+       The expression evaluator used in this calc is based on the "JavaScript Mathematical Expression Evaluator" made by
+		Khan Information Systems:
+		<a href="http://www.codeproject.com/KB/scripting/jsexpressioneval.aspx">http://www.codeproject.com/KB/scripting/jsexpressioneval.aspx</a>
+      </p>
+    </fieldset>
+
+  </section>
+
+  <footer>
+    <p>2011 &copy; Lennart Coopmans - <a href="https://github.com/LennartC/Bench-Calculator-Opera-Extension">source code</a>
+<br/>
+ Licensed under the Apache License, Version 2.0</p>
+  </footer>
+</body>
+</html>

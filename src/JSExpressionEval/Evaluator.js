@@ -141,6 +141,7 @@ function Expression(pstrExp)
 
 	    intIndex = 0;
 	    myStack  =  new Stack();
+		
 	    while (intIndex < parrExp.length)
 	    {
 	        strTok = parrExp[intIndex];
@@ -259,7 +260,8 @@ function Expression(pstrExp)
 	                        throw strOP + " not supported for strings!"
 	                }
 	                break;
-	            case "=" :
+	            case "==" :
+	            case "!=" :
 	            case "<" :
 	            case ">" :
 	            case "<>" :
@@ -282,9 +284,9 @@ function Expression(pstrExp)
 	                {
 	                    dblVal1 = ToNumber(objOp1);
 	                    dblVal2 = ToNumber(objOp2);
-	                    if (strTok == "=")
+	                    if (strTok == "==")
 	                        myStack.Push((dblVal1 == dblVal2));
-	                    else if (strTok == "<>")
+	                    else if (strTok == "<>" || strTok == "!=")
 	                        myStack.Push((dblVal1 != dblVal2));
 	                    else if (strTok == ">")
 	                        myStack.Push((dblVal1 > dblVal2));
@@ -491,7 +493,8 @@ function Expression(pstrExp)
 	            case "|" :
 	            case ">" :
 	            case "<" :
-	            case "=" :
+	            case "==" :
+	            case "!=" :
 	            case ">=" :
 	            case "<=" :
 	            case "<>" :
